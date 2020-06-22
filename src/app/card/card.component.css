@@ -1,0 +1,26 @@
+:host {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background:#FF0000;
+  /* Gray 1 */
+
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+:host div {
+  /* Text background */
+  position: absolute;
+  left: 18.18%;
+  right: 18.18%;
+  top: 14.29%;
+  bottom: 40.82%;
+
+  background: #FFFFFF;
+  border-radius: 3px;
+}
