@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,10 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input() color: string;
   @Input() number: string;
+  @Input() showBack?: boolean;
+
+  @HostBinding('class') class: ClassController;
 
   constructor() { }
 
   ngOnInit() {
+    var classes: ClassController = {};
+
+    classes[this.color] = true;
+    classes[this.showBack ? 'showBack' : 'showFront'] = true;
+
+    this.class = classes;
   }
 
 }
+
+type ClassController = {[className: string]: boolean};

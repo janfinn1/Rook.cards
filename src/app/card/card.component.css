@@ -1,0 +1,36 @@
+:host(.red) .front {
+  background: red;
+}
+:host(.yellow) .front {
+  background: yellow;
+}
+:host(.green) .front {
+  background: green;
+}
+:host(.black) .front {
+  background: black;
+}
+
+:host > div {
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  border-radius: 5px;
+  position: relative;
+
+  height: 100px;
+  width: 50px;
+}
+
+.front div {
+  /* Text background */
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  right: 7px;
+  line-height: 1.5em;
+  height: 1.5em;
+  text-align: center;
+
+  background: #FFFFFF;
+  border-radius: 3px;
+}

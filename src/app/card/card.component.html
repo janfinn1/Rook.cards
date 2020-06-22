@@ -1,1 +1,10 @@
-<p [style.color]="color">{{ color }} - {{ number }}</p>
+<div *ngIf="showBack; else front"
+    class="back">
+  <img alt="Rook siloutte"/>
+</div>
+
+<ng-template #front>
+  <div class="front">
+    <div>{{ number }}</div>
+  </div>
+</ng-template>
