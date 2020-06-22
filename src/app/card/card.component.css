@@ -2,10 +2,10 @@
   background: red;
 }
 :host(.yellow) .front {
-  background: yellow;
+  background: #F2C94C;
 }
 :host(.green) .front {
-  background: green;
+  background: #27AE60;
 }
 :host(.black) .front {
   background: black;
