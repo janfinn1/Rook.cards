@@ -1,3 +1,7 @@
+:host > div {
+  display: flex;
+}
+
 p {
   font-family: Lato;
 }

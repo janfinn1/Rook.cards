@@ -12,15 +12,23 @@ export class Game {
   setup(): void {
     // Generate the deck
     this.deck = [];
-
     for(let color of ['red', 'yellow', 'green', 'black']){
-      this.cards.push(new Card("1", color));
+      this.deck.push(new Card("1", color));
 
       for(let i=5;i<=14;i++)
-        this.cards.push(new Card("" + i, color));
+        this.deck.push(new Card("" + i, color));
     }
 
-    this.cards.push(new Card("R"));
+    this.deck.push(new Card("R"));
+    
+    // Build the players
+    this.players = [
+      new Player(1, "James"),
+      new Player(2, "Jan"),
+      new Player(3, "Jackie"),
+      new Player(4, "Julia")
+    ];
+    
   }
   deal(): void {
     // Shuffle and deal the cards to the players
