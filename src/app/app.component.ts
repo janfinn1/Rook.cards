@@ -1,7 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 
 import { Card } from './card/card';
-import { shuffle } from './helpers/snippets';
+import { SnippetService } from './helpers/snippet.service';
 
 @Component({
   selector: 'my-app',
@@ -13,6 +13,9 @@ export class AppComponent  {
 
   public cards: Card[];
 
+  constructor(
+    private snippetService: SnippetService
+  ) {}
 
   ngOnInit() {
     this.cards = [];
@@ -26,7 +29,7 @@ export class AppComponent  {
 
     this.cards.push(new Card("R"));
 
-    shuffle(this.cards);
+    this.snippetService.shuffle(this.cards);
 
     console.log(this.cards.length);
   }
