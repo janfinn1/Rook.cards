@@ -1,28 +1,28 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnChanges, Input, HostBinding, HostListener } from '@angular/core';
+
+import { Card } from './card';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
-  @Input() color: string;
-  @Input() number: string;
-  @Input() showBack?: boolean;
+export class CardComponent implements OnChanges {
+  @Input() card: Card;
 
-  @HostBinding('class') class: ClassController;
+  @HostBinding('class') class: string;
+
+  public showBack = false;
+  @HostListener('click', ['$event.target'])
+  onClick(btn) {
+    this.showBack = !this.showBack;
+  }
 
   constructor() { }
 
-  ngOnInit() {
-    var classes: ClassController = {};
-
-    classes[this.color] = true;
-    classes[this.showBack ? 'showBack' : 'showFront'] = true;
-
-    this.class = classes;
+  ngOnChanges() {
+    this.class = this.card.color;
   }
-
 }
 
 type ClassController = {[className: string]: boolean};

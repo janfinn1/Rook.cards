@@ -3,7 +3,4 @@
   Start editing to see some magic happen :)
 </p>
 
-<app-card color="black" number="5"></app-card>
-<app-card color="yellow" number="R"></app-card>
-<app-card color="green" number="1"></app-card>
-<app-card color="red" number="9"></app-card>
+<app-card *ngFor="let card of cards" [card]="card"></app-card>
