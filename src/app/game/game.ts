@@ -1,11 +1,13 @@
 import { SnippetService } from '../helpers/snippet.service';
 
 import { Card, CardLocation } from '../card/card';
-import { Player } from '../player/player';
+import { Player, PlayerId } from '../player/player';
 
 export class Game {
   deck: Card[];
   players: Player[]; // There can be 4 or 5 players
+
+  turn: PlayerId;
 
   constructor(private snippetService: SnippetService) { }
 
@@ -50,7 +52,18 @@ export class Game {
       card.initialLocation = card.location = assignTo;
     });
 
+    // Player 1 always starts
+    this.turn = 1;
+
     console.log(this.deck);
+  }
+
+  tryPlayCard(card: Card): void {
+    if(card.location !== this.turn)
+      return; // Cannot play the card if it's not your turn
+
+    card.location = CardLocation.table;
+    this.turn = (this.turn) % this.players.length + 1 as PlayerId;
   }
 
   private filterForLocation(location: CardLocation): Card[] {
