@@ -20,7 +20,7 @@ export class Game {
     }
 
     this.deck.push(new Card("R"));
-    
+
     // Build the players
     this.players = [
       new Player(1, "James"),
@@ -28,7 +28,7 @@ export class Game {
       new Player(3, "Jackie"),
       new Player(4, "Julia")
     ];
-    
+
   }
   deal(): void {
     // Shuffle and deal the cards to the players
@@ -53,10 +53,16 @@ export class Game {
     console.log(this.deck);
   }
 
+  private filterForLocation(location: CardLocation): Card[] {
+    return this.deck.filter(card => card.location === location);
+  }
   getCardsForPlayer(player: Player): Card[] {
-    return this.deck.filter(card => card.location === player.id);
+    return this.filterForLocation(player.id); // This maps to playerXhand...
   }
   getNest(): Card[] {
-    return this.deck.filter(card => card.location === CardLocation.nest);
+    return this.filterForLocation(CardLocation.nest);
+  }
+  getTable(): Card[] {
+    return this.filterForLocation(CardLocation.table);
   }
 }
